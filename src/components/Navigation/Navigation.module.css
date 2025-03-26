@@ -5,6 +5,7 @@
     left: 20px;
     display: flex;
     justify-content: space-between;
+    height: 64px;
     padding: 12px;
     border-radius: 8px;
     background-color: #ffffff;
