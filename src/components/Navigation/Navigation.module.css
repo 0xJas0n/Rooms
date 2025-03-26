@@ -40,3 +40,7 @@
         border-radius: 40px;
     }
 }
+
+.active {
+    text-decoration-color: #000000;
+}
