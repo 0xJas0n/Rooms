@@ -1,0 +1,110 @@
+.roomsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding: 16px;
+    border: 1px solid rgb(39, 39, 42);
+    border-radius: 16px;
+}
+
+.imageContainer {
+    border-radius: 12px;
+    font-size: 0;
+    overflow: hidden;
+
+    & img {
+        max-width: 100%;
+        object-fit: cover;
+        aspect-ratio: 6/4;
+    }
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 1rem;
+
+    & h2 {
+        margin-bottom: 16px;
+        font-size: 1.25rem;
+    }
+
+    & p {
+        margin-bottom: 16px;
+        color: #A1A1AA;
+    }
+}
+
+
+.cardInfo {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    margin-bottom: 8px;
+
+    & svg {
+        width: 24px;
+    }
+
+    &:first-of-type {
+        margin-top: auto;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+    margin-block: 40px;
+
+    & button {
+        padding: 12px;
+        border: 1px solid rgb(39, 39, 42);
+        border-radius: 6px;
+        background: none;
+        font-size: 0;
+        cursor: pointer;
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    & svg {
+        width: 24px;
+    }
+}
+
+.loader {
+    box-sizing: border-box;
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin-inline: auto;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -7,9 +7,12 @@
     justify-content: space-between;
     height: 64px;
     padding: 12px;
+    border: 1px solid rgb(39, 39, 42);
     border-radius: 8px;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #09090B99;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, .4);
+    backdrop-filter: blur(8px);
+    z-index: 999;
 }
 
 .list {
@@ -27,7 +30,7 @@
     text-decoration-color: transparent;
 
     &:hover {
-        text-decoration-color: #000000;
+        text-decoration-color: inherit;
     }
 }
 
@@ -42,5 +45,5 @@
 }
 
 .active {
-    text-decoration-color: #000000;
+    text-decoration-color: inherit;
 }

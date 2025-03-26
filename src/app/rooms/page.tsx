@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Rooms from "@/components/Rooms/Rooms";
+import styles from "./page.module.css"
 
 export const metadata: Metadata = {
   title: 'Rooms',
@@ -7,8 +9,9 @@ export const metadata: Metadata = {
 
 export default function RoomsPage() {
   return (
-      <div>
-        <h1>Room Page</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Rooms</h1>
+          <Rooms />
       </div>
   );
 }
