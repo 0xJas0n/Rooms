@@ -1,0 +1,41 @@
+.navigation {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+    list-style: none;
+}
+
+.listItem {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: underline;
+    transition: text-decoration-color 0.2s ease;
+    text-decoration-color: transparent;
+
+    &:hover {
+        text-decoration-color: #000000;
+    }
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    & img {
+        border-radius: 40px;
+    }
+}
