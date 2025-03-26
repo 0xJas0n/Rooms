@@ -27,11 +27,11 @@ const getCurrencySymbol = (currencyCode: string) => {
 export default function Rooms() {
     const searchParams = useSearchParams();
     const router = useRouter();
-
     const [rooms, setRooms] = useState<Room[] | null>(null);
     const [loading, setLoading] = useState(true);
     const initialPage = Math.max(Number(searchParams.get("page") || "1"), 1) - 1;
     const [page, setPage] = useState(initialPage);
+    const isNextDisabled = !rooms || rooms.length < 9;
 
     useEffect(() => {
         const fetchRooms = async () => {
@@ -48,7 +48,7 @@ export default function Rooms() {
         };
 
         fetchRooms();
-    }, [page]); // Add `page` to dependency array to prevent infinite re-fetching
+    }, [page]);
 
     const handlePageChange = (newPage: number) => {
         setPage(newPage);
@@ -59,6 +59,7 @@ export default function Rooms() {
     if (loading) {
         return <span className={styles.loader}></span>;
     }
+
 
     return (
         <div>
@@ -72,13 +73,17 @@ export default function Rooms() {
 
                             <div className={styles.cardContent}>
                                 <h2>{room.title}</h2>
+
                                 <p>{room.description}</p>
+
                                 <span className={styles.cardInfo}>
                                     {formatDate(room.createdAt)}
                                 </span>
+
                                 <span className={styles.cardInfo}>
                                     {getCurrencySymbol(room.pricePerNight.currency) + room.pricePerNight.amount}
                                 </span>
+
                                 <span className={styles.cardInfo}>
                                     {room.owner.firstName + " " + room.owner.lastName}
                                 </span>
@@ -98,7 +103,7 @@ export default function Rooms() {
                     </svg>
                 </button>
 
-                <button onClick={() => handlePageChange(page + 1)}>
+                <button onClick={() => handlePageChange(page + 1)} disabled={isNextDisabled}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5.5 0 26 26">
                         <path fill="#ededed" fillRule="evenodd"
                               d="M14.404 11.36 3.637 1.6a2.11 2.11 0 0 0-3.008 0 2.117 2.117 0 0 0 0 3L9.885 13 .629 21.4a2.117 2.117 0 0 0 0 3c.83.84 2.177.84 3.008 0l10.767-9.76c.45-.45.648-1.05.611-1.64a2.115 2.115 0 0 0-.611-1.64"/>
