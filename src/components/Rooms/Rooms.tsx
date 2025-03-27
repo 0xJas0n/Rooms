@@ -85,7 +85,7 @@ export default function Rooms() {
             {rooms && rooms.length > 0 ? (
                 <div className={styles.roomsGrid}>
                     {rooms.map((room, index) => (
-                        <a href={"/" + room.id} className={styles.card} key={index}>
+                        <a href={"rooms/" + room.id} className={styles.card} key={index}>
                             <div className={styles.imageContainer}>
                                 <img src={room.heroUrl} alt="Room image"/>
                             </div>
