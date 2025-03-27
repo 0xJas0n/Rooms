@@ -57,11 +57,9 @@ export default function Rooms() {
         router.push(`?page=${newPage + 1}&sort=${sort}`, {scroll: false});
     };
 
-
     if (loading) {
         return <span className={styles.loader}></span>;
     }
-
 
     return (
         <div>
