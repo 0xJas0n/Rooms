@@ -122,6 +122,7 @@
     border: 1px solid rgb(39, 39, 42);
     border-radius: 6px;
     background: none;
+    font-size: 16px;
     cursor: pointer;
 }
 
