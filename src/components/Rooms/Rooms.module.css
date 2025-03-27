@@ -88,6 +88,35 @@
     }
 }
 
+.filterContainer {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 40px;
+}
+
+.filterWrapper {
+    position: relative;
+
+    &::before {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23ededed' fill-rule='evenodd' d='M15 10.5A3.502 3.502 0 0 0 18.355 8H21a1 1 0 1 0 0-2h-2.645a3.502 3.502 0 0 0-6.71 0H3a1 1 0 0 0 0 2h8.645A3.502 3.502 0 0 0 15 10.5zM3 16a1 1 0 1 0 0 2h2.145a3.502 3.502 0 0 0 6.71 0H21a1 1 0 1 0 0-2h-9.145a3.502 3.502 0 0 0-6.71 0H3z' clip-rule='evenodd'/%3E%3C/svg%3E");
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        width: 18px;
+        font-size: 0;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+}
+
+.filter {
+    padding: 12px 16px 12px 40px;
+    border: 1px solid rgb(39, 39, 42);
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+}
+
 .loader {
     box-sizing: border-box;
     display: block;

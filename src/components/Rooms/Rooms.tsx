@@ -32,12 +32,14 @@ export default function Rooms() {
     const initialPage = Math.max(Number(searchParams.get("page") || "1"), 1) - 1;
     const [page, setPage] = useState(initialPage);
     const isNextDisabled = !rooms || rooms.length < 9;
+    const initialSort = searchParams.get("sort") || "createdAt";
+    const [sort, setSort] = useState(initialSort);
 
     useEffect(() => {
         const fetchRooms = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`${API_URL}/rooms?page=${page}&size=9`);
+                const response = await fetch(`${API_URL}/rooms?page=${page}&size=9&sort=${sort}`);
                 const data = await response.json();
                 setRooms(data.nodes);
             } catch (error) {
@@ -48,11 +50,11 @@ export default function Rooms() {
         };
 
         fetchRooms();
-    }, [page]);
+    }, [page, sort]);
 
     const handlePageChange = (newPage: number) => {
         setPage(newPage);
-        router.push(`?page=${newPage + 1}`, {scroll: false});
+        router.push(`?page=${newPage + 1}&sort=${sort}`, {scroll: false});
     };
 
 
@@ -63,6 +65,23 @@ export default function Rooms() {
 
     return (
         <div>
+            <div className={styles.filterContainer}>
+                <div className={styles.filterWrapper}>
+                    <select
+                        className={styles.filter}
+                        value={sort}
+                        onChange={(e) => {
+                            setSort(e.target.value);
+                            setPage(0);
+                            router.push(`?page=1&sort=${e.target.value}`, {scroll: false});
+                        }}
+                    >
+                        <option value="createdAt">Newest First</option>
+                        <option value="pricePerNight">Price (Low to High)</option>
+                    </select>
+                </div>
+            </div>
+
             {rooms && rooms.length > 0 ? (
                 <div className={styles.roomsGrid}>
                     {rooms.map((room, index) => (
@@ -93,7 +112,7 @@ export default function Rooms() {
                                         strokeWidth="1.5"
                                         d="M9.592 5h4.222c1.081 0 .488 1.664.05 2.679l-.498 1.164-.068.157c.472-.023.939.11 1.33.382a15.603 15.603 0 0 1 3.498 4.869c.329.68.46 1.445.376 2.2-.1 1.925-1.606 3.459-3.484 3.549h-6.63c-1.878-.087-3.386-1.62-3.488-3.545a4.033 4.033 0 0 1 .376-2.2 15.602 15.602 0 0 1 3.502-4.873A2.145 2.145 0 0 1 10.108 9l-.078-.181-.487-1.14C9.107 6.664 8.51 5 9.593 5Z"
                                         clipRule="evenodd"/><path fill="#ededed"
-                                                                   d="M13.298 9.75a.75.75 0 0 0 0-1.5v1.5Zm-3.19-1.5a.75.75 0 0 0 0 1.5v-1.5Zm5.87.4a.75.75 0 0 0-.75-1.3l.75 1.3Zm-2.612.193.144.736h.002l-.146-.736Zm-3.336-.024.155-.734-.006-.001-.149.735ZM8.166 7.344a.75.75 0 0 0-.726 1.312l.726-1.312Zm5.132.906h-3.19v1.5h3.19v-1.5Zm1.93-.9a6.626 6.626 0 0 1-2.01.758l.294 1.47a8.126 8.126 0 0 0 2.466-.928l-.75-1.3Zm-2.007.757a7.585 7.585 0 0 1-3.036-.022l-.31 1.468a9.085 9.085 0 0 0 3.635.026l-.29-1.472Zm-3.042-.023a7.04 7.04 0 0 1-2.013-.74L7.44 8.656a8.542 8.542 0 0 0 2.442.898l.297-1.47Z"/></svg>
+                                                                  d="M13.298 9.75a.75.75 0 0 0 0-1.5v1.5Zm-3.19-1.5a.75.75 0 0 0 0 1.5v-1.5Zm5.87.4a.75.75 0 0 0-.75-1.3l.75 1.3Zm-2.612.193.144.736h.002l-.146-.736Zm-3.336-.024.155-.734-.006-.001-.149.735ZM8.166 7.344a.75.75 0 0 0-.726 1.312l.726-1.312Zm5.132.906h-3.19v1.5h3.19v-1.5Zm1.93-.9a6.626 6.626 0 0 1-2.01.758l.294 1.47a8.126 8.126 0 0 0 2.466-.928l-.75-1.3Zm-2.007.757a7.585 7.585 0 0 1-3.036-.022l-.31 1.468a9.085 9.085 0 0 0 3.635.026l-.29-1.472Zm-3.042-.023a7.04 7.04 0 0 1-2.013-.74L7.44 8.656a8.542 8.542 0 0 0 2.442.898l.297-1.47Z"/></svg>
                                     {getCurrencySymbol(room.pricePerNight.currency) + " " + room.pricePerNight.amount}
                                 </span>
 
