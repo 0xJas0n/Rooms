@@ -119,6 +119,9 @@
 
 .loader {
     box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
     width: 48px;
     height: 48px;
@@ -131,9 +134,9 @@
 
 @keyframes rotation {
     0% {
-        transform: rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
