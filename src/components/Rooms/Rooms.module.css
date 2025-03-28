@@ -103,6 +103,17 @@
     margin-bottom: 40px;
 }
 
+.paginationContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+
+    & span:last-child {
+        font-size: 14px;
+        color: #A1A1AA;
+    }
+}
+
 .filterWrapper {
     position: relative;
 
