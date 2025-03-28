@@ -5,23 +5,8 @@ import {useSearchParams, useRouter} from "next/navigation";
 import {API_URL} from "@/app/constants";
 import {Room, Collection} from "@/app/types";
 import styles from "./Rooms.module.css";
-
-const formatDate = (isoString: string): string => {
-    return new Date(isoString).toLocaleDateString("de-DE", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-    });
-};
-
-const getCurrencySymbol = (currencyCode: string): string => {
-    return (0).toLocaleString("en", {
-        style: "currency",
-        currency: currencyCode,
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-    }).replace(/\d/g, "").trim();
-};
+import {formatDate} from "@/utils/formatDate";
+import {getCurrencySymbol} from "@/utils/getCurrencySymbol";
 
 export default function Rooms() {
     const searchParams = useSearchParams();
