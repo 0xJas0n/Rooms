@@ -7,6 +7,7 @@ import {Room, Collection} from "@/app/types";
 import styles from "./Rooms.module.css";
 import {formatDate} from "@/utils/formatDate";
 import {getCurrencySymbol} from "@/utils/getCurrencySymbol";
+import Image from "next/image";
 
 export default function Rooms() {
     const searchParams = useSearchParams();
@@ -92,7 +93,7 @@ export default function Rooms() {
                             key={room.id}
                         >
                             <div className={styles.imageContainer}>
-                                <img src={room.heroUrl} alt={`Room: ${room.title}`}/>
+                                <Image src={room.heroUrl} alt={`Room: ${room.title}`} width={310} height={200} />
                             </div>
 
                             <div className={styles.cardContent}>

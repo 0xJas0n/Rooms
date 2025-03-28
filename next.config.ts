@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
                 hostname: "i.pravatar.cc",
                 pathname: "/**",
             },
+            {
+                protocol: "https",
+                hostname: "c.pxhere.com",
+                pathname: "/**",
+            },
         ],
     },
 };

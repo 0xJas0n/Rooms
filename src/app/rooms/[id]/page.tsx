@@ -5,6 +5,7 @@ import {notFound} from "next/navigation";
 import styles from "./page.module.css"
 import {formatDate} from "@/utils/formatDate";
 import {getCurrencySymbol} from "@/utils/getCurrencySymbol";
+import Image from "next/image";
 
 export async function generateMetadata({params}: {params: {id: string} }): Promise<Metadata> {
     try {
@@ -30,7 +31,7 @@ export default async function RoomDetailPage({params}: {params: {id: string} }) 
                 <h1 className={styles.title}>{room.title}</h1>
 
                 <div className={styles.contentContainer}>
-                    <img className={styles.image} src={room.heroUrl} alt={room.title}/>
+                    <Image className={styles.image} src={room.heroUrl} alt={room.title} width={520} height={345}/>
 
                     <div className={styles.infoContainer}>
                         <p>{room.description}</p>
