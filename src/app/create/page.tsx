@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import CreateRoomForm from '@/components/CreateRoomForm/CreateRoomForm';
+import styles from './page.module.css'
 
 export const metadata: Metadata = {
     title: 'Create Room',
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function CreatePage() {
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold text-center mb-8">Create a New Room</h1>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Create a New Room</h1>
             <CreateRoomForm />
         </div>
     );
