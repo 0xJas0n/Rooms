@@ -1,0 +1,81 @@
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-weight: 600;
+}
+
+.formGroup input,
+.formGroup textarea,
+.priceContainer select,
+.priceContainer input {
+    padding: 10px;
+    border: 1px solid rgb(39, 39, 42);
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+}
+
+.formGroup textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.priceContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.priceContainer select {
+    flex: 1;
+}
+
+.priceContainer input {
+    flex: 3;
+}
+
+.submitButton {
+    padding: 12px;
+    background-color: var(--foreground);
+    color: var(--background);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submitButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.errorContainer {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid red;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.errorMessage {
+    color: red;
+    margin-bottom: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .submitButton {
+        background-color: var(--background);
+        color: var(--foreground);
+        border: 1px solid var(--foreground);
+    }
+}
