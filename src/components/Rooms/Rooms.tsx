@@ -34,6 +34,8 @@ export default function Rooms() {
     const isNextDisabled = !rooms || rooms.length < 9;
     const initialSort = searchParams.get("sort") || "createdAt";
     const [sort, setSort] = useState(initialSort);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalElements, setTotalElements] = useState(0);
 
     useEffect(() => {
         const fetchRooms = async () => {
@@ -41,6 +43,8 @@ export default function Rooms() {
             try {
                 const response = await fetch(`${API_URL}/rooms?page=${page}&size=9&sort=${sort}`);
                 const data = await response.json();
+                setTotalPages(data.page.totalPages);
+                setTotalElements(data.page.totalElements);
                 setRooms(data.nodes);
             } catch (error) {
                 console.error("Error fetching rooms:", error);
@@ -64,6 +68,10 @@ export default function Rooms() {
     return (
         <div>
             <div className={styles.filterContainer}>
+                <div>
+                    Page {page + 1} of {totalPages} (Total: {totalElements})
+                </div>
+
                 <div className={styles.filterWrapper}>
                     <select
                         className={styles.filter}
