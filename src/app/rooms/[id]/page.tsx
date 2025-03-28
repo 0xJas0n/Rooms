@@ -7,7 +7,13 @@ import {formatDate} from "@/utils/formatDate";
 import {getCurrencySymbol} from "@/utils/getCurrencySymbol";
 import Image from "next/image";
 
-export async function generateMetadata({params}: {params: {id: string} }): Promise<Metadata> {
+type RoomDetailPageProps = Promise<{
+    id: string
+}>
+
+export async function generateMetadata(props: { params: RoomDetailPageProps }): Promise<Metadata> {
+    const params = await props.params;
+
     try {
         const response = await fetch(`${API_URL}/rooms/${params.id}`);
         const room: Room = await response.json();
@@ -21,7 +27,9 @@ export async function generateMetadata({params}: {params: {id: string} }): Promi
     }
 }
 
-export default async function RoomDetailPage({params}: {params: {id: string} }) {
+export default async function RoomDetailPage(props: { params: RoomDetailPageProps }) {
+    const params = await props.params;
+
     try {
         const response = await fetch(`${API_URL}/rooms/${params.id}`);
         const room: Room = await response.json();
